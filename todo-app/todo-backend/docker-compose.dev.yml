@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes:
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js # When a container is started for the first time it will execute files with extensions .sh and .js that are found in /docker-entrypoint-initdb.d
+      - ./mongo_data:/data/db
