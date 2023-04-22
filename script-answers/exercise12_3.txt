@@ -1,0 +1,18 @@
+Script started on 2023-04-22 11:20:10+08:00 [TERM="xterm-256color" TTY="/dev/pts/8" COLUMNS="170" LINES="36"]
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ sudo docker ps
+[?2004l[sudo] password for linjie: 
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ sudo docker psexit[Ksudo docker ps -a
+[?2004lCONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+a8275ce5ec98   ubuntu        "bash"     6 minutes ago    Exited (0) 39 seconds ago             confident_blackwell
+db0b6d74213a   hello-world   "/hello"   10 minutes ago   Exited (0) 9 minutes ago              gifted_lamport
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ sudo docker start -i a827
+[?2004l[?2004h]0;root@a8275ce5ec98: /root@a8275ce5ec98:/# echo "console.log('hello     Hwll   ello World')" > /src/ap      usr/src/app/index.js
+[?2004l[?2004h]0;root@a8275ce5ec98: /root@a8275ce5ec98:/# [Kcat /user/sr     r/src/app/index.js 
+[?2004lconsole.log('Hello World')
+[?2004h]0;root@a8275ce5ec98: /root@a8275ce5ec98:/# [Kexit
+[?2004lexit
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ exit
+[?2004lexit
+
+Script done on 2023-04-22 11:21:22+08:00 [COMMAND_EXIT_CODE="0"]
