@@ -1,0 +1,114 @@
+Script started on 2023-04-22 16:44:28+08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="170" LINES="36"]
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ sudo docker ps
+[?2004l[sudo] password for linjie: 
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+13f46e91d938   nginx     "/docker-entrypoint.…"   4 minutes ago    Up 4 minutes    0.0.0.0:8080->80/tcp, :::8080->80/tcp         beautiful_wilbur
+ee7b20b5598c   mongo     "docker-entrypoint.s…"   29 minutes ago   Up 29 minutes   0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend-mongo-1
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ dockersdockerudocker[Cdockerodocker docker[C[C[C[C[C[C exec ee7b-ee7biee7btee7b ee7b[C[C[C[C mongosh
+[?2004l]0;mongosh mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	64439ebc9bf94b6507a6aad2
+Connecting to:		[1m[32mmongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0[0m
+Using MongoDB:		6.0.5
+[1m[33mUsing Mongosh[0m:		1.8.0
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the [1mdisableTelemetry()[0m command.
+
+[1G[0J [1G[1G[0Jtest> [7Gshow dbs
+Uncaught [1m[31mMongoServerError[0m: command listDatabases requires authentication
+[1G[0Jtest> [7G
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+[1G[0Jtest> [7G
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ sudo docker exec -it ee7b mongosh[C[C[C[C[C[C[C[Kbash
+[?2004l[?2004hroot@ee7b20b5598c:/# mongs osh = -u root -p example
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	64439ee8b61cf48979ccfce4
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0[0m
+Using MongoDB:		6.0.5
+[1m[33mUsing Mongosh[0m:		1.8.0
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+[1G[0J [1G[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2023-04-22T08:15:24.305+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2023-04-22T08:15:25.640+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+   2023-04-22T08:15:25.640+00:00: vm.max_map_count is too low
+[1m[33m------[0m
+
+[1m[33m------[0m
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m        108.00 KiB
+[1mlocal[0m          72.00 KiB
+[1mthe_database[0m   56.00 KiB
+[1G[0Jtest> [7Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.find9{[1G[0Jthe_database> db.todos.find9[29G[1G[0Jthe_database> db.todos.find[28G({})
+[
+  {
+    _id: ObjectId("64439795dd056cbcb140ef0a"),
+    text: [32m'Learning Frontend'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("64439795dd056cbcb140ef0b"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.todo.create({Increase the number o[36mof[39m tools i[36min[39m my toolbelt[32m"[39m[32mh[39m[1D[1D[1G[0Jthe_database> db.todo.create({Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"h[39m[74G[1D[1G[0Jthe_database> db.todo.create({Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"h[39m[73G[1C[1G[0Jthe_database> db.todo.create({Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"h[39m[74G[1C[1G[0Jthe_database> db.todo.create({Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"h[39m[75G[1C[1G[0Jthe_database> db.todo.create({Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[75G[1D[1G[0Jthe_database> db.todo.create({Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[74G[1D[1G[0Jthe_database> db.todo.create({Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[73G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.create({tIncrease the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[32G[1G[0Jthe_database> db.todo.create({teIncrease the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[33G[1G[0Jthe_database> db.todo.create({texIncrease the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[34G[1G[0Jthe_database> db.todo.create({textIncrease the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[35G[1G[0Jthe_database> db.todo.create({[33mtext[39m:Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[36G[1G[0Jthe_database> db.todo.create({[33mtext[39m: Increase the number [36mof[39m tools [36min[39m my toolbelt[32m"[39m[37G[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m[38G[44C, d[36mdo[39mdone[33mdone[39m: fals[33mfalse[39m})
+Uncaught [1m[31mTypeError[0m: db.todo.create is not a function
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[97G[1D[1G[0Jthe_database> db.todo.create[44m([49m{[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[96G[1D[1G[0Jthe_database> db.todo.create([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[95G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[94G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[81G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[80G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt[44m"[39m[49m, [33mdone[39m: [33mfalse[39m})[37G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[36G[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m[44m}[49m)[30G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[29G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[28G[1D[1D[1D[1D[1D[1D[1D[1C[1G[0Jthe_database> db..create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[18G[1G[0Jthe_database> db.c.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[19G[1G[0Jthe_database> db.co.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[20G[1G[0Jthe_database> db.col.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[21G[1G[0Jthe_database> db.coll.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[22G[1G[0Jthe_database> db.colle.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[23G[1G[0Jthe_database> db.collen.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[24G[1G[0Jthe_database> db.collenc.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[25G[1G[0Jthe_database> db.collen.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[24G[1G[0Jthe_database> db.colle.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[23G[1G[0Jthe_database> db.collec.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[24G[1G[0Jthe_database> db.collect.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[25G[1G[0Jthe_database> db.collecti.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[26G[1G[0Jthe_database> db.collectio.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[27G[1G[0Jthe_database> db.collection.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[28G[75C
+Uncaught [1m[31mTypeError[0m: db.collection.create is not a function
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.collection.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[103G[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[97G[1D[1G[0Jthe_database> db.todo.create[44m([49m{[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[96G[1D[1G[0Jthe_database> db.todo.create([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[95G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[94G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[81G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[80G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt[44m"[39m[49m, [33mdone[39m: [33mfalse[39m})[37G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[36G[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m[44m}[49m)[30G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[29G[1D[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[28G[1C[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[29G[1G[0Jthe_database> db.todo.({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[23G[1G[0Jthe_database> db.todo.i({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[24G[1G[0Jthe_database> db.todo.in({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[25G[1G[0Jthe_database> db.todo.ins({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[26G[1G[0Jthe_database> db.todo.inse({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[27G[1G[0Jthe_database> db.todo.inser({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[28G[1G[0Jthe_database> db.todo.insert({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[29G[1G[0Jthe_database> db.todo.insertO({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[30G[1G[0Jthe_database> db.todo.insertOn({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[31G[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[32G[68C[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[100G
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId("64439f4a7ed048223f029072")
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[100G[1G[0Jthe_database> db.collection.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[103G[1G[0Jthe_database> db.todo.create({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[97G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("64439795dd056cbcb140ef0a"),
+    text: [32m'Learning Frontend'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("64439795dd056cbcb140ef0b"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.find({})[32G[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[100G[1G[0Jthe_database> db.todos.find({})[32G[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[100G[1D[1G[0Jthe_database> db.todo.insertOne[44m([49m{[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[99G[1D[1G[0Jthe_database> db.todo.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[98G[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[97G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[84G[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[83G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt[44m"[39m[49m, [33mdone[39m: [33mfalse[39m})[40G[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[39G[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m[44m}[49m)[33G[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[32G[1D[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[31G[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1C[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[23G[78C
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId("64439f627ed048223f029073")
+}
+[1G[0Jthe_database> [15Gcd .[1G[0Jthe_database> cd [18G[1G[0Jthe_database> cd[17G[1G[0Jthe_database> c[16G[1G[0Jthe_database> [15Gshow collections
+[1mtodo[0m
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdbd[1G[0Jthe_database> db[17G.todo.drop()
+[33mtrue[39m
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todo.drop()[29G[1G[0Jthe_database> show collections[31G
+[1mtodos[0m
+[1G[0Jthe_database> [15Gexit
+[?2004hroot@ee7b20b5598c:/# exit
+[?2004lexit
+]0;linjie@endeavour:~/courses/FSO-part12/part12-containers-applications[?2004h[linjie@endeavour part12-containers-applications]$ exit
+[?2004lexit
+
+Script done on 2023-04-22 16:49:48+08:00 [COMMAND_EXIT_CODE="0"]
