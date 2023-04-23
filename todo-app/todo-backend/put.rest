@@ -1,7 +1,7 @@
-PUT http://localhost:3000/todos/64439795dd056cbcb140ef0a
+POST http://localhost:3000/todos/
 Content-Type: application/json
 
 {
-    "text": "Learning Frontend",
+    "text": "wash head",
     "done": false
 }

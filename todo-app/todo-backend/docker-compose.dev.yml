@@ -12,3 +12,10 @@ services:
     volumes:
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js # When a container is started for the first time it will execute files with extensions .sh and .js that are found in /docker-entrypoint-initdb.d
       - ./mongo_data:/data/db
+  redis:
+    image: redis
+    command: ['redis-server', '--appendonly', 'yes']
+    ports:
+      - 1234:6379
+    volumes:
+      - ./redis_data:/data
